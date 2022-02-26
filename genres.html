@@ -10,14 +10,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         
         <meta name="author" content="Alex Chan and Nathaniel Gonzalez">
-        <meta name="description" content="Website to discover movies and add them to a personal movie list to track what movies you've watched">
-        <meta name="keywords" content="Movies, IMDB, List, Entertainment, Ratings, Reviews">        
-        <title>Movie Markdown</title>
+        <meta name="description" content="Movies to watch organized by Genre">
+        <meta name="keywords" content="Movies, IMDB, List, Entertainment, Ratings, Reviews, Genre, Comedy, Action, Horror">        
+        <title>Genres</title>
         <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 
     <body>
+
         <!--Navigation Bar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -46,31 +47,33 @@
                 </ul>
               </div>
             </div>
-          </nav>        
+        </nav>        
 
-          <!--Search Bar-->
-          <form class="d-flex">
+        <!--Search Bar-->
+        <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        </form>
 
-          <!--Scrollspy Side Navigation Bar-->
-          <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sidebar">
-            <a class="navbar-brand" href="#">Sections</a>
+        <!--Scrollspy Side Navigation Bar-->
+        <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sidebar">
+            <a class="navbar-brand" href="#">Genres</a>
+            <hr>
             <nav class="nav nav-pills flex-column">
-              <li><a class="nav-link" href="#trending">Trending</a></li>
-              <li><a class="nav-link" href="#popular-all-time">Popular (All-Time)</a></li>
-              <li><a class="nav-link" href="#plan-to-watch">Plan To Watch</a></li>
+              <a class="nav-link" href="#trending">Action</a>
+              <a class="nav-link" href="#popular-all-time">Comedy</a>
+              <a class="nav-link" href="#plan-to-watch">Drama</a>
             </nav>
-          </nav>
+        </nav>
           
-          <div class="home_sections">
+        <div class="home_sections">
+
             <!--Trending Section-->
             <section id="trending">
-              <div class="jumbotron">
-                <h3 class="display-4">Trending</h3>
-                <hr class="my-4"> 
-              </div>
+                <div class="jumbotron">
+                    <h3 class="display-4">Action</h3>
+                    <hr class="my-4">
+                </div>
               <!--Cards for each individual movie-->
               <section class="row">
                 <div class="card col-4" style="width: 18rem;">
@@ -92,10 +95,10 @@
             
             <!--Popular All Time Section-->
             <section id="popular-all-time">
-              <div class="jumbotron">
-                <h3 class="display-4">Popular (All-Time)</h3>
-                <hr class="my-4"> 
-              </div>
+                <div class="jumbotron">
+                    <h3 class="display-4">Comedy</h3>
+                    <hr class="my-4">
+                </div>
               <!--Cards for each individual movie-->
               <section class="row">
                 <div class="card col-4" style="width: 18rem;">
@@ -117,10 +120,10 @@
             
             <!--Plan To Watch Section-->
             <section id="plan-to-watch">
-              <div class="jumbotron">
-                <h3 class="display-4">Plan To Watch</h3>
-                <hr class="my-4"> 
-              </div>
+                <div class="jumbotron">
+                    <h3 class="display-4">Drama</h3>
+                    <hr class="my-4">
+                </div>
               <!--Cards for each individual movie-->
               <section class="row">
                 <div class="card col-4" style="width: 18rem;">
@@ -139,8 +142,12 @@
                 </div>
               </section>
             </section>
-          </div>
-            
-          </body>
+
+        </div>
+
+        
           
-          </html>
+
+    </body>
+
+</html>
