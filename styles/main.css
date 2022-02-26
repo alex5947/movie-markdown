@@ -46,3 +46,50 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+[class*="col-"] {
+    float: left;
+    width: 100%; /* mobile first - 100% width */
+}
+
+/* For large enough screens, use 12-column grid */
+@media only screen and (min-width: 768px) {
+    .row {
+        width: 100%;
+    }
+
+    .col-12 {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .col-8 {
+        width: 66.66%;
+        margin-bottom: 50px;
+    }
+
+    .col-4 {
+        width: 33.33%;
+        margin-bottom: 50px;
+    }
+
+	.col-3 {
+		width: 25%;
+		margin-bottom: 50px;
+	}
+
+    .col-2 {
+        width: 16.66%;
+        margin-bottom: 50px;
+    }
+
+	.col-1 {
+		width: 8.33%;
+		margin-bottom: 50px;
+	}
+
+}
