@@ -51,6 +51,19 @@ table {
     box-sizing: border-box;
 }
 
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    padding: 50px 0;
+
+}
+
+/* push home page sections to the right to space from sidebar */
+.home_sections {
+    margin-left:250px; 
+}
+
 [class*="col-"] {
     float: left;
     width: 100%; /* mobile first - 100% width */
@@ -59,7 +72,7 @@ table {
 /* For large enough screens, use 12-column grid */
 @media only screen and (min-width: 768px) {
     .row {
-        width: 100%;
+        width: 130%;
     }
 
     .col-12 {
@@ -93,3 +106,4 @@ table {
 	}
 
 }
+
