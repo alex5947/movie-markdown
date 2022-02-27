@@ -88,10 +88,6 @@ td {
     vertical-align: middle;
 }
 
-tbody .border-bot{
-    border-bottom: 1px solid #d2d6d8;
-}
-
 [class*="col-"] {
     float: left;
     width: 100%; /* mobile first - 100% width */
