@@ -64,6 +64,23 @@ table {
     margin-left:250px; 
 }
 
+/* My Move List table margins and spacing on page */
+table.list {
+    width: 90%;
+    margin: 40px;
+}
+
+/* Resize images in "My Movie List" Page */
+.list_images {
+    width: 130px;
+    height: 180px;
+}
+
+/* Align text and images at the middle of the vertical axis for movie list*/
+td {
+    vertical-align: middle;
+}
+
 [class*="col-"] {
     float: left;
     width: 100%; /* mobile first - 100% width */
