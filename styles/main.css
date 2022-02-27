@@ -30,7 +30,6 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-    background-color: bisque;
 }
 ol, ul {
 	list-style: none;
@@ -90,15 +89,25 @@ td {
 }
 
 tbody .border-bot{
-    border-bottom: 1px solid #d2d6d8;
-}
-
-.bg-light-blue {
-    background-color: rgb(186, 206, 243);
+    border-bottom: 1px solid #ffffff;
 }
 
 div .padding-top{
     padding-top: 10px;
+}
+
+.pop {
+    transition: 1s;
+}
+
+.pop:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 5px 2px rgb(194, 241, 194);
+    z-index: 2;
+}
+
+.text-lime {
+    color: rgb(114, 202, 114);
 }
 
 [class*="col-"] {

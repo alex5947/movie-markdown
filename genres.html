@@ -17,32 +17,32 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 
-    <body>
+    <body class="bg-dark">
 
         <!--Navigation Bar-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-gradient">
             <div class="container-fluid">
-              <a class="navbar-brand highlight" href="index.html">Movie Markdown</a>
+              <a class="navbar-brand active highlight text-light href="index.html">Movie Markdown</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link highlight" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active highlight text-light" aria-current="page" href="index.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight" href="mymovielist.html">My Movie List</a>
+                    <a class="nav-link active highlight text-light" href="mymovielist.html">My Movie List</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight active" href="genres.html">Genres</a>
+                    <a class="nav-link active highlight text-light" href="genres.html">Genres</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight">My Profile</a>
+                    <a class="nav-link active highlight text-light">My Profile</a>
                   </li>
                   <!--If not logged in, will show as "Login", else if logged in, will show as "Logout"-->
                   <li class="nav-item">
-                    <a class="nav-link disabled">Login/Logout</a>
+                    <a class="nav-link active highlight text-light">Login/Logout</a>
                   </li>
                 </ul>
               </div>
@@ -56,13 +56,13 @@
         </form>
 
         <!--Scrollspy Side Navigation Bar-->
-        <nav id="navbar-example3" class="navbar navbar-light bg-light-blue flex-column align-items-stretch p-3 sidebar">
-            <a class="navbar-brand" href="#">Genres</a>
-            <hr>
+        <nav id="navbar-example3" class="navbar navbar-light bg-dark bg-gradient flex-column align-items-stretch p-3 sidebar">
+            <a class="navbar-brand text-light" href="#">Genres</a>
+            <hr class="text-light">
             <nav class="nav nav-pills flex-column">
-              <a class="nav-link" href="#trending">Action</a>
-              <a class="nav-link" href="#popular-all-time">Comedy</a>
-              <a class="nav-link" href="#plan-to-watch">Drama</a>
+              <a class="nav-link highlight" href="#trending">Action</a>
+              <a class="nav-link highlight" href="#popular-all-time">Comedy</a>
+              <a class="nav-link highlight" href="#plan-to-watch">Drama</a>
             </nav>
         </nav>
           
@@ -71,22 +71,22 @@
             <!--Action Section-->
             <section id="trending">
                 <div class="jumbotron">
-                    <h3 class="display-4">Action</h3>
-                    <hr class="my-4">
+                    <h3 class="display-4 text-light">Action</h3>
+                    <hr class="my-4 text-light">
                 </div>
               <!--Cards for each individual movie-->
               <section class="row">
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
                   <img src="images/action/notimetodie.jfif" class="card-img-top padding-top" alt="No Time to Die"> <!--Movie Thumbnail-->
                   <div class="card-body">
-                    <h5 class="card-title">No Time to Die</h5> <!--Movie Title-->
+                    <h5 class="card-title text-light">No Time to Die</h5> <!--Movie Title-->
                     <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
                   </div>
                 </div>
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
                   <img src="images/action/junglecruise.jfif" class="card-img-top padding-top" alt="Jungle Cruise"> <!--Movie Thumbnail-->
                   <div class="card-body">
-                    <h5 class="card-title">Jungle Cruise</h5> <!--Movie Title-->
+                    <h5 class="card-title text-light">Jungle Cruise</h5> <!--Movie Title-->
                     <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
                   </div>
                 </div>
@@ -96,22 +96,22 @@
             <!--Comedy Section-->
             <section id="popular-all-time">
                 <div class="jumbotron">
-                    <h3 class="display-4">Comedy</h3>
-                    <hr class="my-4">
+                    <h3 class="display-4 text-light">Comedy</h3>
+                    <hr class="my-4 text-light">
                 </div>
               <!--Cards for each individual movie-->
               <section class="row">
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
                   <img src="images/comedy/fatherhood.jfif" class="card-img-top padding-top" alt="Fatherhood"> <!--Movie Thumbnail-->
                   <div class="card-body">
-                    <h5 class="card-title">Fatherhood</h5> <!--Movie Title-->
+                    <h5 class="card-title text-light">Fatherhood</h5> <!--Movie Title-->
                     <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
                   </div>
                 </div>
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
                   <img src="images/comedy/rushhour.jfif" class="card-img-top padding-top" alt="Rush Hour 3"> <!--Movie Thumbnail-->
                   <div class="card-body">
-                    <h5 class="card-title">Rush Hour 3</h5> <!--Movie Title-->
+                    <h5 class="card-title text-light">Rush Hour 3</h5> <!--Movie Title-->
                     <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
                   </div>
                 </div>
@@ -121,22 +121,22 @@
             <!--Drama Section-->
             <section id="plan-to-watch">
                 <div class="jumbotron">
-                    <h3 class="display-4">Drama</h3>
-                    <hr class="my-4">
+                    <h3 class="display-4 text-light">Drama</h3>
+                    <hr class="my-4 text-light">
                 </div>
               <!--Cards for each individual movie-->
               <section class="row">
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
                   <img src="images/drama/asilentvoice.jfif" class="card-img-top padding-top" alt="A Silent Voice"> <!--Movie Thumbnail-->
                   <div class="card-body">
-                    <h5 class="card-title">A Silent Voice</h5> <!--Movie Title-->
+                    <h5 class="card-title text-light">A Silent Voice</h5> <!--Movie Title-->
                     <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
                   </div>
                 </div>
-                <div class="card col-4" style="width: 18rem;">
+                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
                   <img src="images/drama/titanic.jfif" class="card-img-top padding-top" alt="Titanic"> <!--Movie Thumbnail-->
                   <div class="card-body">
-                    <h5 class="card-title">Titanic</h5> <!--Movie Title-->
+                    <h5 class="card-title text-light">Titanic</h5> <!--Movie Title-->
                     <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
                   </div>
                 </div>
@@ -147,9 +147,9 @@
 
         <footer class="py-3 my-4">
             <div class = "col-12">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <ul class="nav justify-content-center border-bottom border-secondary pb-3 mb-3">
                 <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">My Movie List</a></li>
+                <li class="nav-item"><a href="mymovielist.html" class="nav-link px-2 text-muted">My Movie List</a></li>
                 <li class="nav-item"><a href="genres.html" class="nav-link px-2 text-muted">Genres</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">My Profile</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Login/Logout</a></li>
