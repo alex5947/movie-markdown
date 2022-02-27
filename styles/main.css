@@ -56,7 +56,14 @@ table {
     width: 200px;
     height: 200px;
     padding: 50px 0;
+}
 
+a.highlight:hover {
+    background: yellow;
+}
+
+a.highlight:active {
+    color:red;
 }
 
 /* push home page sections to the right to space from sidebar */
