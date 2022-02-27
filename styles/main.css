@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    background-color: bisque;
 }
 ol, ul {
 	list-style: none;
@@ -92,10 +93,21 @@ tbody .border-bot{
     border-bottom: 1px solid #d2d6d8;
 }
 
+.bg-light-blue {
+    background-color: rgb(186, 206, 243);
+}
+
+div .padding-top{
+    padding-top: 10px;
+}
+
 [class*="col-"] {
     float: left;
     width: 100%; /* mobile first - 100% width */
 }
+
+
+
 
 /* For large enough screens, use 12-column grid */
 @media only screen and (min-width: 768px) {
