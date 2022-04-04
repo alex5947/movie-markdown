@@ -1,6 +1,6 @@
 <?php
 
-class MoiveMarkdownController {
+class MovieMarkdownController {
 
     
     private $command;
@@ -41,7 +41,7 @@ class MoiveMarkdownController {
     }
 
     // Email Validation Function
-    function validateEmail($email, $regex = "") {
+    private function validateEmail($email, $regex = "") {
         // echo func_num_args();
         if(preg_match('/^[A-Za-z0-9_\-\+]+[\.A-Za-z0-9_\-\+]*[A-Za-z0-9_\-\+]+[@][A-Za-z0-9\.\-]*(\.[A-Za-z]+)$/', $email)) {
             if($regex != "") {
@@ -59,7 +59,7 @@ class MoiveMarkdownController {
     
     // Display the login page (and handle login logic)
     private function login() {
-        if (isset($_POST["email"]) && validateEmail($_POST["email"])) {
+        if (isset($_POST["email"]) && $this->validateEmail($_POST["email"])) {
             $data = $this->db->query("select * from project_user where email = ?;", "s", $_POST["email"]);
             if ($data === false) {
                 $error_msg = "Error checking for user";
