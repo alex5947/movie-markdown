@@ -19,7 +19,7 @@ class MovieMarkdownController {
             case "genres":
                 $this->genresPage();
                 break;
-            case "moveielist":
+            case "movielist":
                 $this->movielistPage();
                 break;
             case "logout":
@@ -60,40 +60,61 @@ class MovieMarkdownController {
     // Display the login page (and handle login logic)
     private function login() {
         if (isset($_POST["email"]) && $this->validateEmail($_POST["email"])) {
-            $data = $this->db->query("select * from project_user where email = ?;", "s", $_POST["email"]);
-            if ($data === false) {
-                $error_msg = "Error checking for user";
-            } else if (!empty($data)) {
-                if (password_verify($_POST["password"], $data[0]["password"])) {
-                    $_SESSION["name"] = $_POST["name"];
-                    $_SESSION["email"] = $_POST["email"];
-                    $_SESSION["user id"] = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
-                    header("Location: ?command=homepage");
-                } else {
-                    $error_msg = "Wrong password";
-                }
-            } else { // empty, no user found
-                $insert = $this->db->query("insert into project_user (name, email, password) values (?, ?, ?);", 
-                "sss", $_POST["name"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT));
-                if ($insert === false) {
-                    $error_msg = "Error inserting user";
-                } else {
-                    $_SESSION["name"] = $_POST["name"];
-                    $_SESSION["email"] = $_POST["email"];
-                    $_SESSION["user id"] = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
-                    header("Location: ?command=homepage");
+            if ($this->validateEmail($_POST["email"])) {
+                $data = $this->db->query("select * from project_user where email = ?;", "s", $_POST["email"]);
+                if ($data === false) {
+                    $error_msg = "Error checking for user";
+                } else if (!empty($data)) {
+                    if (password_verify($_POST["password"], $data[0]["password"])) {
+                        $_SESSION["name"] = $_POST["name"];
+                        $_SESSION["email"] = $_POST["email"];
+                        $_SESSION["user id"] = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
+                        header("Location: ?command=homepage");
+                    } else {
+                        $error_msg = "Wrong password";
+                    }
+                } else { // empty, no user found
+                    $insert = $this->db->query("insert into project_user (name, email, password) values (?, ?, ?);", 
+                    "sss", $_POST["name"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT));
+                    if ($insert === false) {
+                        $error_msg = "Error inserting user";
+                    } else {
+                        $_SESSION["name"] = $_POST["name"];
+                        $_SESSION["email"] = $_POST["email"];
+                        $_SESSION["user id"] = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
+                        header("Location: ?command=homepage");
+                    }
                 }
             }
-        }
-        else {
-            $error_msg = "Error, please provide a valid email address";
+            else {
+                $error_msg = "Error, please enter a valid email address";
+            }
         }
         include("templates/login.php");
     }
 
     // Display homepage (index.html)
     private function homePage() {
-        include("templates/index.html");
+        // get list of trending, popular, and plan-to-watch movies
+        $trending = $this->db->query("select * from project_movies where id between 1 and 2;");
+        $popular = $this->db->query("select * from project_movies where id between 3 and 4;");
+        $plan_to_watch = $this->db->query("select * from project_movies where id between 5 and 6;");
+
+        // add movie to movie list
+        if (isset($_POST["addmovie"])) {
+            $added_movie = $this->db->query("select * from project_movies where id = ?;", "i", $_POST["movieid"]);
+            $insert = $this->db->query("insert into project_movielist (user_id, title, genre, poster, rating) values (?, ?, ?, ?, ?);", 
+                "isssi", $_SESSION["user id"], $added_movie[0]["title"], $added_movie[0]["genre"], $added_movie[0]["poster"], $added_movie[0]["rating"]); 
+        }
+        
+        // get list of movies that current user has added to movielist
+        $seen = $this->db->query("select title from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
+        $added = array();
+        foreach ($seen as $movie) {
+            array_push($added, $movie["title"]);
+        }
+
+        include("templates/home.php");
     }
 
     // Display genres page (genres.html)

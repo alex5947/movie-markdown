@@ -24,14 +24,14 @@
         <!--Navigation Bar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-gradient" aria-label="nav">
             <div class="container-fluid">
-              <a class="navbar-brand acitve highlight text-light" href="index.html">Movie Markdown</a>
+              <a class="navbar-brand acitve highlight text-light" href="home.php">Movie Markdown</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active highlight text-light" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active highlight text-light" aria-current="page" href="home.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link acitve highlight text-light" href="mymovielist.html">My Movie List</a>
@@ -77,20 +77,33 @@
               </div>
               <!--Cards for each individual movie-->
               <section class="row">
-                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
-                  <img src="images/spiderman-no-way-home.jpg" class="card-img-top padding-top" alt="Spider-man: No Way Home"> <!--Movie Thumbnail-->
-                  <div class="card-body">
-                    <h5 class="card-title text-light">Spider-man: No Way Home</h5> <!--Movie Title-->
-                    <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
-                  </div>
-                </div>
-                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
-                  <img src="images/lego-movie.jpg" class="card-img-top padding-top" alt="The Lego Movie"> <!--Movie Thumbnail-->
-                  <div class="card-body">
-                    <h5 class="card-title text-light">The Lego Movie</h5> <!--Movie Title-->
-                    <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
-                  </div>
-                </div>
+                <?php 
+                    foreach ($trending as $movie) {
+                    ?>
+                      <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
+                        <img src="<?php echo $movie["poster"];?>" class="card-img-top padding-top" alt="<?php echo $movie["title"];?>"> <!--Movie Thumbnail-->
+                        <div class="card-body">
+                          <h5 class="card-title text-light"><?php echo $movie["title"];?></h5> <!--Movie Title-->
+                          <?php
+                            if (in_array($movie["title"], $added)) {
+                              ?>
+                                <button type="button" disabled>Movie Added</button>
+                              <?php
+                            }
+                            else {
+                              ?>
+                              <form action="?command=homepage" method="post">
+                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
+                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
+                              </form>
+                              <?php
+                            }
+                          ?>
+                        </div>
+                      </div>
+                    <?php
+                    }
+                ?>
               </section>
             </section>
             
