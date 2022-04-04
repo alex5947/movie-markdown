@@ -61,6 +61,7 @@
                         <th scope="col">Movie Title</th>
                         <th scope="col">Genre</th>
                         <th scope="col">Rating</th>
+                        <th scope="col">Remove</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -89,6 +90,9 @@
                           echo "<input type='hidden' id='option_id' name='option_id' value='{$movie['id']}'/>";
                           echo "</form>";
                           echo "</td><!--Movie Rating-->";
+                          echo "<form action='?command=movielist' method='post'>";
+                          echo "<td><button type='submit' class='btn btn-link btn-xs' name='remove_movie' value='{$movie['id']}'>Delete Entry</button></td>";
+                          echo "</form>";
                           echo "</tr>";
                           $counter += 1;
                         }

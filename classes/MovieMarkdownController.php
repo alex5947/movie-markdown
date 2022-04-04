@@ -147,6 +147,8 @@ class MovieMarkdownController {
 
         if(isset($_POST["option_rating"]) && !empty($_POST["option_rating"])){
             $this->db->query("update project_movielist set rating = ? where user_id = ? and id = ?;", "iii", $_POST["option_rating"], $_SESSION["user id"], $_POST["option_id"]);
+        } else if(isset($_POST["remove_movie"]) && !empty($_POST["remove_movie"]) ) {
+            $this->db->query("delete from project_movielist where user_id = ? and id = ?;", "ii", $_SESSION["user id"], $_POST["remove_movie"]);
         }
 
         $my_movie_list_data = $this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
