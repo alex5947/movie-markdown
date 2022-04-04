@@ -85,7 +85,7 @@
                           }
                           echo "</select>";
                           echo "<button type='submit' class='btn btn-default btn-xs'>Set</button>";
-                          echo "<input type='hidden' id='option_id' name='option_id' value='{$movie[id]}'/>";
+                          echo "<input type='hidden' id='option_id' name='option_id' value='{$movie['id']}'/>";
                           echo "</form>";
                           echo "</td><!--Movie Rating-->";
                           echo "</tr>";
