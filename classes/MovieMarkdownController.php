@@ -106,7 +106,7 @@ class MovieMarkdownController {
             $insert = $this->db->query("insert into project_movielist (user_id, title, genre, poster, rating) values (?, ?, ?, ?, ?);", 
                 "isssi", $_SESSION["user id"], $added_movie[0]["title"], $added_movie[0]["genre"], $added_movie[0]["poster"], $added_movie[0]["rating"]); 
         }
-        
+
         // get list of movies that current user has added to movielist
         $seen = $this->db->query("select title from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
         $added = array();
@@ -119,7 +119,7 @@ class MovieMarkdownController {
 
     // Display genres page (genres.html)
     private function genresPage() {
-        include("templates/genres.html");
+        include("templates/genres.php");
     }
 
     // Display homepage (mymovielist.html)

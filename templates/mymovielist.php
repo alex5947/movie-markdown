@@ -23,27 +23,27 @@
         <!--Navigation Bar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-gradient">
             <div class="container-fluid">
-              <a class="navbar-brand highlight text-light" href="index.html">Movie Markdown</a>
+              <a class="navbar-brand highlight text-light" href="?command=homepage">Movie Markdown</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link highlight text-light" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link highlight text-light" aria-current="page" href="?command=homepage">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight active text-light" href="mymovielist.html">My Movie List</a>
+                    <a class="nav-link highlight active text-light" href="?command=movielist">My Movie List</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight text-light" href="genres.html">Genres</a>
+                    <a class="nav-link highlight text-light" href="?command=genres">Genres</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link highlight text-light">My Profile</a>
                   </li>
                   <!--If not logged in, will show as "Login", else if logged in, will show as "Logout"-->
                   <li class="nav-item">
-                    <a class="nav-link highlight text-light">Login/Logout</a>
+                    <a href="?command=logout" class="nav-link highlight text-light">Login/Logout</a>
                   </li>
                 </ul>
               </div>
@@ -101,11 +101,11 @@
         <footer class="py-3 my-4">
           <div class = "col-12">
           <ul class="nav justify-content-center border-bottom border-light pb-3 mb-3">
-              <li class="nav-item"><a href="index.html" class="nav-link px-2 text-light">Home</a></li>
-              <li class="nav-item"><a href="mymovielist.html" class="nav-link px-2 text-light">My Movie List</a></li>
-              <li class="nav-item"><a href="genres.html" class="nav-link px-2 text-light">Genres</a></li>
+              <li class="nav-item"><a href="?command=homepage" class="nav-link px-2 text-light">Home</a></li>
+              <li class="nav-item"><a href="?command=mymovielist" class="nav-link px-2 text-light">My Movie List</a></li>
+              <li class="nav-item"><a href="?command=genres" class="nav-link px-2 text-light">Genres</a></li>
               <li class="nav-item"><a href="#" class="nav-link px-2 text-light">My Profile</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Login/Logout</a></li>
+              <li class="nav-item"><a href="?command=logout" class="nav-link px-2 text-light">Login/Logout</a></li>
           </ul>
           <p class="text-center text-light">Made by Alex Chan & Nathaniel Gonzalez © 2022</p>
           </div>
