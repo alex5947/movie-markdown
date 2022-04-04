@@ -153,6 +153,8 @@ class MovieMarkdownController {
 
         $my_movie_list_data = $this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
 
+        $json_variable = json_encode($this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]));
+
         include("templates/mymovielist.php");
     }
 }
