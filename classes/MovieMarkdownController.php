@@ -59,7 +59,7 @@ class MovieMarkdownController {
     
     // Display the login page (and handle login logic)
     private function login() {
-        if (isset($_POST["email"]) && $this->validateEmail($_POST["email"])) {
+        if (isset($_POST["email"])) {
             if ($this->validateEmail($_POST["email"])) {
                 $data = $this->db->query("select * from project_user where email = ?;", "s", $_POST["email"]);
                 if ($data === false) {
@@ -68,7 +68,8 @@ class MovieMarkdownController {
                     if (password_verify($_POST["password"], $data[0]["password"])) {
                         $_SESSION["name"] = $_POST["name"];
                         $_SESSION["email"] = $_POST["email"];
-                        $_SESSION["user id"] = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
+                        $user_id = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
+                        $_SESSION["user id"] = $user_id[0]["id"];
                         header("Location: ?command=homepage");
                     } else {
                         $error_msg = "Wrong password";
@@ -81,7 +82,8 @@ class MovieMarkdownController {
                     } else {
                         $_SESSION["name"] = $_POST["name"];
                         $_SESSION["email"] = $_POST["email"];
-                        $_SESSION["user id"] = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
+                        $user_id = $this->db->query("select id from project_user where email = ?;", "s", $_POST["email"]);
+                        $_SESSION["user id"] = $user_id[0]["id"];
                         header("Location: ?command=homepage");
                     }
                 }

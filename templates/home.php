@@ -115,20 +115,33 @@
               </div>
               <!--Cards for each individual movie-->
               <section class="row">
-                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
-                  <img src="images/cars.jpg" class="card-img-top padding-top" alt="Cars"> <!--Movie Thumbnail-->
-                  <div class="card-body">
-                    <h5 class="card-title text-light">Cars</h5> <!--Movie Title-->
-                    <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
-                  </div>
-                </div>
-                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
-                  <img src="images/real-steel.jpg" class="card-img-top padding-top" alt="Real Steel"> <!--Movie Thumbnail-->
-                  <div class="card-body">
-                    <h5 class="card-title text-light">Real Steel</h5> <!--Movie Title-->
-                    <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
-                  </div>
-                </div>
+                <?php 
+                    foreach ($popular as $movie) {
+                    ?>
+                      <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
+                        <img src="<?php echo $movie["poster"];?>" class="card-img-top padding-top" alt="<?php echo $movie["title"];?>"> <!--Movie Thumbnail-->
+                        <div class="card-body">
+                          <h5 class="card-title text-light"><?php echo $movie["title"];?></h5> <!--Movie Title-->
+                          <?php
+                            if (in_array($movie["title"], $added)) {
+                              ?>
+                                <button type="button" disabled>Movie Added</button>
+                              <?php
+                            }
+                            else {
+                              ?>
+                              <form action="?command=homepage" method="post">
+                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
+                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
+                              </form>
+                              <?php
+                            }
+                          ?>
+                        </div>
+                      </div>
+                    <?php
+                    }
+                ?>
               </section>
             </section>
             
@@ -140,20 +153,33 @@
               </div>
               <!--Cards for each individual movie-->
               <section class="row">
-                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
-                  <img src="images/uncharted-movie.jpg" class="card-img-top padding-top" alt="Uncharted"> <!--Movie Thumbnail-->
-                  <div class="card-body">
-                    <h5 class="card-title text-light">Uncharted</h5> <!--Movie Title-->
-                    <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
-                  </div>
-                </div>
-                <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
-                  <img src="images/bee-movie.jpg" class="card-img-top padding-top" alt="Bee Movie"> <!--Movie Thumbnail-->
-                  <div class="card-body">
-                    <h5 class="card-title text-light">Bee Movie</h5> <!--Movie Title-->
-                    <a href="#" class="btn btn-primary">Details</a> <!--Redirect to movie details-->
-                  </div>
-                </div>
+                <?php 
+                    foreach ($plan_to_watch as $movie) {
+                    ?>
+                      <div class="card col-4 bg-dark bg-gradient" style="width: 18rem;">
+                        <img src="<?php echo $movie["poster"];?>" class="card-img-top padding-top" alt="<?php echo $movie["title"];?>"> <!--Movie Thumbnail-->
+                        <div class="card-body">
+                          <h5 class="card-title text-light"><?php echo $movie["title"];?></h5> <!--Movie Title-->
+                          <?php
+                            if (in_array($movie["title"], $added)) {
+                              ?>
+                                <button type="button" disabled>Movie Added</button>
+                              <?php
+                            }
+                            else {
+                              ?>
+                              <form action="?command=homepage" method="post">
+                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
+                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
+                              </form>
+                              <?php
+                            }
+                          ?>
+                        </div>
+                      </div>
+                    <?php
+                    }
+                ?>
               </section>
             </section>
           </div>
