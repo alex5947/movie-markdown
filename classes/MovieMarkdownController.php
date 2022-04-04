@@ -121,6 +121,24 @@ class MovieMarkdownController {
 
     // Display genres page (genres.html)
     private function genresPage() {
+        // get list of trending, popular, and plan-to-watch movies
+        $action = $this->db->query("select * from project_movies where id between 7 and 8;");
+        $comedy = $this->db->query("select * from project_movies where id between 9 and 10;");
+        $drama = $this->db->query("select * from project_movies where id between 11 and 12;");
+
+        // add movie to movie list
+        if (isset($_POST["addmovie"])) {
+            $added_movie = $this->db->query("select * from project_movies where id = ?;", "i", $_POST["movieid"]);
+            $insert = $this->db->query("insert into project_movielist (user_id, title, genre, poster, rating) values (?, ?, ?, ?, ?);", 
+                "isssi", $_SESSION["user id"], $added_movie[0]["title"], $added_movie[0]["genre"], $added_movie[0]["poster"], $added_movie[0]["rating"]); 
+        }
+
+        // get list of movies that current user has added to movielist
+        $seen = $this->db->query("select title from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
+        $added = array();
+        foreach ($seen as $movie) {
+            array_push($added, $movie["title"]);
+        }
         include("templates/genres.php");
     }
 
