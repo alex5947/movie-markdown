@@ -103,7 +103,14 @@ class MovieMarkdownController {
 
     // Display homepage (mymovielist.html)
     private function movielistPage() {
-        include("templates/mymovielist.html");
+
+        if(isset($_POST["option_rating"]) && !empty($_POST["option_rating"])){
+            $this->db->query("update project_movielist set rating = ? where user_id = ? and id = ?;", "iii", $_POST["option_rating"], $_SESSION["user id"], $_POST["option_id"]);
+        }
+
+        $my_movie_list_data = $this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
+
+        include("templates/mymovielist.php");
     }
 }
 

@@ -64,66 +64,35 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr class="border-bot">
-                          <td>1</td>
-                          <td> <img src="images/spiderman-no-way-home.jpg" alt="Spider-man: No Way Home" class="list_images pop"></td> <!--Movie Image-->
-                          <td class="align-middle">Spider-man: No Way Home</td> <!--Movie Title-->
-                          <td>Action</td><!--Movie Genre-->
-                          <td>
-                            <select name="rating" aria-label="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                            </select>
-                          </td><!--Movie Rating-->
-                      </tr>
-                      <tr class="border-bot">
-                          <td>2</td>
-                          <td> <img src="images/drama/asilentvoice.jfif" alt="A Silent Voice" class="list_images pop"></td> <!--Movie Image-->
-                          <td class="align-middle">A Silent Voice</td> <!--Movie Title-->
-                          <td>Drama</td><!--Movie Genre-->
-                          <td>
-                            <select name="rating" aria-label="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                            </select>
-                          </td><!--Movie Rating-->
-                      </tr>
-                      <tr class="border-bot">
-                          <td>3</td>
-                          <td> <img src="images/real-steel.jpg" alt="Real Steel" class="list_images pop"></td> <!--Movie Image-->
-                          <td class="align-middle">Real Steel</td> <!--Movie Title-->
-                          <td>Action</td><!--Movie Genre-->
-                          <td>
-                            <select name="rating" aria-label="rating">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                            </select>
-                          </td><!--Movie Rating-->
-                      </tr>
+                      <?php
+                      if($my_movie_list_data !== false && !empty($my_movie_list_data)){
+                        $counter = 1;
+                        foreach($my_movie_list_data as $movie){
+                          echo "<tr class='border-bot'>";
+                          echo "<td>{$counter}</td>";
+                          echo "<td> <img src='{$movie['poster']}' alt='{$movie['title']}' class='list_images pop'></td> <!--Movie Image-->";
+                          echo "<td class='align-middle'>{$movie['title']}</td> <!--Movie Title-->";
+                          echo "<td>{$movie['genre']}</td><!--Movie Genre-->";
+                          echo "<td>";
+                          echo "<form action='?command=movielist' method='post'>";
+                          echo "<select name='option_rating' aria-label='rating'>";
+                          for ($i = 1; $i < 11; $i++){
+                            if($i === $movie["rating"]){
+                              echo "<option value='{$i}' selected>{$i}</option>";
+                            } else {
+                              echo "<option value='{$i}'>{$i}</option>";
+                            }
+                          }
+                          echo "</select>";
+                          echo "<button type='submit' class='btn btn-default btn-xs'>Set</button>";
+                          echo "<input type='hidden' id='option_id' name='option_id' value='{$movie[id]}'/>";
+                          echo "</form>";
+                          echo "</td><!--Movie Rating-->";
+                          echo "</tr>";
+                          $counter += 1;
+                        }
+                      }
+                      ?>
                   </tbody>
             </table>
         </div>
