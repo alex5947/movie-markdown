@@ -43,7 +43,7 @@
                   </li>
                   <!--If not logged in, will show as "Login", else if logged in, will show as "Logout"-->
                   <li class="nav-item">
-                    <a href="?command=logout" class="nav-link highlight text-light">Login/Logout</a>
+                    <a href="?command=logout" class="nav-link highlight text-light">Logout</a>
                   </li>
                 </ul>
               </div>
@@ -110,7 +110,7 @@
               <li class="nav-item"><a href="?command=mymovielist" class="nav-link px-2 text-light">My Movie List</a></li>
               <li class="nav-item"><a href="?command=genres" class="nav-link px-2 text-light">Genres</a></li>
               <li class="nav-item"><a href="#" class="nav-link px-2 text-light">My Profile</a></li>
-              <li class="nav-item"><a href="?command=logout" class="nav-link px-2 text-light">Login/Logout</a></li>
+              <li class="nav-item"><a href="?command=logout" class="nav-link px-2 text-light">Logout</a></li>
           </ul>
           <p class="text-center text-light">Made by Alex Chan & Nathaniel Gonzalez © 2022</p>
           </div>
