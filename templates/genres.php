@@ -187,9 +187,9 @@
         <footer class="py-3 my-4">
             <div class = "col-12">
             <ul class="nav justify-content-center border-bottom border-light pb-3 mb-3">
-                <li class="nav-item"><a href="index.php" class="nav-link px-2 text-light">Home</a></li>
-                <li class="nav-item"><a href="mymovielist.php" class="nav-link px-2 text-light">My Movie List</a></li>
-                <li class="nav-item"><a href="genres.php" class="nav-link px-2 text-light">Genres</a></li>
+            <li class="nav-item"><a href="?command=homepage" class="nav-link px-2 text-light">Home</a></li>
+                <li class="nav-item"><a href="?command=movielist" class="nav-link px-2 text-light">My Movie List</a></li>
+                <li class="nav-item"><a href="?command=genres" class="nav-link px-2 text-light">Genres</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">My Profile</a></li>
                 <li class="nav-item"><a href="?command=logout" class="nav-link px-2 text-light">Logout</a></li>
             </ul>

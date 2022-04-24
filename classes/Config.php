@@ -3,8 +3,8 @@
 class Config {
     public static $db = [
         "host" => "localhost",
-        "user" => "root",
-        "pass" => "",
-        "database" => "project_db"
+        "user" => "ac5ug",
+        "pass" => "-mAr1tU1QZVe",
+        "database" => "ac5ug"
     ];
 }
