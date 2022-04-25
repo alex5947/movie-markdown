@@ -28,18 +28,48 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email"/>
+                        <div id="emhelp" class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password"/>
+                        <div id="pwhelp" class="form-text"></div>
                     </div>
                     <div class="text-center">                
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary" id="submit" disabled>Login</button>
                     </div>
                 </form>
                 </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+        <!-- JavaScript login validation  -->
+        <script> 
+
+            function passwordValidate() {
+                var passwordRegExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+                // var passwordRegExp = new RegExp("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$") // minimum eight characters at least one letter and one number
+                var pass = document.getElementById("password");
+                var submit = document.getElementById("submit");
+                var pwhelp = document.getElementById("pwhelp");
+                var passval = pass.value;
+
+                if (passwordRegExp.test(passval)) {
+                    pass.classList.remove("is-invalid");
+                    submit.disabled = false;
+                    pwhelp.textContent = "";
+                } else {
+                    pass.classList.add("is-invalid");
+                    submit.disabled = true;
+                    pwhelp.textContent = "Please include at least one lowercase letter, uppercase letter, number, and special character (!,@,#,$,%,^,&,*)";
+                }
+            }   
+
+            document.getElementById("password").addEventListener("keyup", function() {
+                passwordValidate();
+            });
+            
+        </script>
     </body>
 </html>
