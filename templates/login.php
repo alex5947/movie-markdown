@@ -62,14 +62,14 @@
                 } else {
                     pass.classList.add("is-invalid");
                     submit.disabled = true;
-                    pwhelp.textContent = "Please include at least one lowercase letter, uppercase letter, number, and special character (!,@,#,$,%,^,&,*)";
+                    pwhelp.textContent = "Please include a password with at least 8 characters and at least one lowercase letter, uppercase letter, number, and special character (!,@,#,$,%,^,&,*)";
                 }
             }   
 
             document.getElementById("password").addEventListener("keyup", function() {
                 passwordValidate();
             });
-            
+
         </script>
     </body>
 </html>
