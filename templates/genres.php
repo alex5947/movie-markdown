@@ -41,18 +41,17 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active highlight text-light" aria-current="page" href="?command=homepage">Home</a>
+                    <a class="nav-link active text-light" aria-current="page" href="?command=homepage">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active highlight text-light" href="?command=genres">Genres</a>
+                    <a class="nav-link active text-light" href="?command=genres">Genres</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active highlight text-light" href="?command=movielist">My Movie List</a>
+                    <a class="nav-link active text-light" href="?command=movielist">My Movie List</a>
                   </li>
                   <!--If not logged in, will show as "Login", else if logged in, will show as "Logout"-->
                   <li class="nav-item">
-                    <!-- <a href="?command=logout" class="nav-link active highlight text-light">Logout</a> -->
-                    <a href="" class="nav-link active highlight text-light" onclick="confirmLogout()">Logout</a>
+                    <a href="" class="nav-link active text-light" onclick="confirmLogout()">Logout</a>
                   </li>
                 </ul>
               </div>

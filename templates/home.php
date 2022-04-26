@@ -43,17 +43,17 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active highlight text-light" aria-current="page" href="?command=homepage">Home</a>
+                    <a class="nav-link active text-light" aria-current="page" href="?command=homepage">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active highlight text-light" href="?command=genres">Genres</a>
+                    <a class="nav-link active text-light" href="?command=genres">Genres</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link acitve highlight text-light" href="?command=movielist">My Movie List</a>
+                    <a class="nav-link acitve text-light" href="?command=movielist">My Movie List</a>
                   </li>
                   <!--If not logged in, will show as "Login", else if logged in, will show as "Logout"-->
                   <li class="nav-item">
-                    <a href="" class="nav-link active highlight text-light" onclick="confirmLogout()">Logout</a>
+                    <a href="" class="nav-link active text-light" onclick="confirmLogout()">Logout</a>
                   </li>
                 </ul>
               </div>
@@ -164,12 +164,10 @@
                             }
                             else {
                               ?>
-                              <!-- <form action="?command=homepage" class="pop_add_movie_button" method="post"> -->
                               <div class="pop_add_movie_button" value="<?php echo $movie["id"];?>">
                                 <input type="hidden" id="pop_movieid" name="pop_movieid" value="<?php echo $movie["id"];?>"/> 
                                 <button type="submit" id="pop_addmovie<?php echo $movie["id"];?>" name="pop_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
                               </div>
-                              <!-- </form> -->
                               <?php
                             }
                           ?>
@@ -229,11 +227,6 @@
                             }
                             else {
                               ?>
-                              <!-- <form action="?command=homepage" class="ptw_add_movie_button" method="post" id="add_movie_button"> -->
-                              <!-- <form class="ptw_add_movie_button" method="post" id="add_movie_button"> -->
-                                <!-- <input type="hidden" id="movieid" name="movieid" value=""/> -->
-                                <!-- <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button> -->
-                              <!-- </form> -->
                               <div class="ptw_add_movie_button" value="<?php echo $movie["id"];?>">
                                 <input type="hidden" id="ptw_movieid" name="ptw_movieid" value="<?php echo $movie["id"];?>"/> 
                                 <button type="submit" id="ptw_addmovie<?php echo $movie["id"];?>" name="ptw_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
