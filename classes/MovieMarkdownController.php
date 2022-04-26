@@ -22,6 +22,12 @@ class MovieMarkdownController {
             case "movielist":
                 $this->movielistPage();
                 break;
+            case "get_movielist":
+                $this->getMovielist();
+                break;
+            case "remove_movie":
+                $this->removeMovie();
+                break;
             case "logout":
                 $this->destroySession();
                 break;
@@ -140,15 +146,27 @@ class MovieMarkdownController {
 
         if(isset($_POST["option_rating"]) && !empty($_POST["option_rating"])){
             $this->db->query("update project_movielist set rating = ? where user_id = ? and id = ?;", "iii", $_POST["option_rating"], $_SESSION["user id"], $_POST["option_id"]);
-        } else if(isset($_POST["remove_movie"]) && !empty($_POST["remove_movie"]) ) {
-            $this->db->query("delete from project_movielist where user_id = ? and id = ?;", "ii", $_SESSION["user id"], $_POST["remove_movie"]);
-        }
+        }// else if(isset($_POST["remove_movie"]) && !empty($_POST["remove_movie"]) ) {
+        //     $this->db->query("delete from project_movielist where user_id = ? and id = ?;", "ii", $_SESSION["user id"], $_POST["remove_movie"]);
+        // }
 
         $my_movie_list_data = $this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
 
-        $json_variable = json_encode($this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]));
 
-        include("templates/mymovielist.php");
+        include("templates/mymovielist.php"); // may need to comment this out for ajax to work
+    }
+
+    public function getMovielist(){
+        $json_variable = json_encode($this->db->query("select * from project_movielist where user_id = ?;", "i", $_SESSION["user id"]), JSON_PRETTY_PRINT);
+
+        header("Content-type: application/json");
+        echo $json_variable;
+    }
+
+    public function removeMovie(){
+        if(isset($_POST["btnValue"]) && !empty($_POST["btnValue"]) ) {
+            $this->db->query("delete from project_movielist where user_id = ? and id = ?;", "ii", $_SESSION["user id"], $_POST["btnValue"]);
+        }
     }
 }
 

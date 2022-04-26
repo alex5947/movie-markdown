@@ -13,6 +13,10 @@ if (isset($_GET["command"])) {
     $command = $_GET["command"];
 }
 
+if (isset($_POST["command"])){
+    $command = $_POST["command"];
+}
+
 // If the user's email is not set in the session, then it's not
 // a valid session (they didn't get here from the login page),
 // so we should send them over to log in first before doing
