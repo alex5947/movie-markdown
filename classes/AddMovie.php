@@ -1,4 +1,5 @@
 <?php
+include "MovieMarkdownController.php";
 include "Config.php";
 class Database {
     private $mysqli;
@@ -27,3 +28,12 @@ class Database {
         return true;
     }
 }
+
+$db = new Database();
+$added_movie = $db->query("select * from project_movies where id = ?;", "i", $_POST["movieid"]);
+$insert = $db->query("insert into project_movielist (user_id, title, genre, poster, rating) values (?, ?, ?, ?, ?);", 
+    "isssi", $_POST["userid"], $added_movie[0]["title"], $added_movie[0]["genre"], $added_movie[0]["poster"], $added_movie[0]["rating"]); 
+
+include("templates/home.php");
+
+?>

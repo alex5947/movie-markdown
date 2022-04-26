@@ -49,7 +49,6 @@
 
             function passwordValidate() {
                 var passwordRegExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-                // var passwordRegExp = new RegExp("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$") // minimum eight characters at least one letter and one number
                 var pass = document.getElementById("password");
                 var submit = document.getElementById("submit");
                 var pwhelp = document.getElementById("pwhelp");

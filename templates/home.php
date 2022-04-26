@@ -18,6 +18,7 @@
         <title>Movie Markdown</title>
         <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
 
     <body class="bg-dark">
@@ -87,15 +88,15 @@
                           <?php
                             if (in_array($movie["title"], $added)) {
                               ?>
-                                <button type="button" disabled>Movie Added</button>
+                                <button type="button" class="btn btn-primary" disabled>Movie Added</button>
                               <?php
                             }
                             else {
                               ?>
-                              <form action="?command=homepage" method="post">
-                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
-                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
-                              </form>
+                              <div class="trending_add_movie_button" value="<?php echo $movie["id"];?>">
+                                <input type="hidden" id="trending_movieid" name="trending_movieid" value="<?php echo $movie["id"];?>"/> 
+                                <button type="submit" id="trending_addmovie<?php echo $movie["id"];?>" name="trending_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
+                              </div>
                               <?php
                             }
                           ?>
@@ -104,6 +105,31 @@
                     <?php
                     }
                 ?>
+                <script>
+                    var trending_elements = document.getElementsByClassName("trending_add_movie_button");
+
+                    var trendingFunction = (event) => {
+                      let btnValue = event.target.getAttribute("value"); 
+                      let user = "<?php echo $_SESSION["user id"]; ?>";
+                      $.ajax({
+                        url: "../movie-markdown/classes/AddMovie.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: ({movieid: btnValue, userid: user}),
+                      });
+
+                      var id = event.target.getAttribute("id");
+                      var button = document.getElementById(id);
+                      button.disabled = true;
+                      button.textContent = "Movie Added";
+                    }
+
+                    for (var i = 0; i < trending_elements.length; i++) {
+                      let button = trending_elements[i].children[1];
+                      button.addEventListener("click", trendingFunction);
+                    }
+                    
+                </script>
               </section>
             </section>
             
@@ -125,15 +151,17 @@
                           <?php
                             if (in_array($movie["title"], $added)) {
                               ?>
-                                <button type="button" disabled>Movie Added</button>
+                                <button type="button" class="btn btn-primary" disabled>Movie Added</button>
                               <?php
                             }
                             else {
                               ?>
-                              <form action="?command=homepage" method="post">
-                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
-                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
-                              </form>
+                              <!-- <form action="?command=homepage" class="pop_add_movie_button" method="post"> -->
+                              <div class="pop_add_movie_button" value="<?php echo $movie["id"];?>">
+                                <input type="hidden" id="pop_movieid" name="pop_movieid" value="<?php echo $movie["id"];?>"/> 
+                                <button type="submit" id="pop_addmovie<?php echo $movie["id"];?>" name="pop_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
+                              </div>
+                              <!-- </form> -->
                               <?php
                             }
                           ?>
@@ -142,6 +170,31 @@
                     <?php
                     }
                 ?>
+                <script>
+                    var pop_elements = document.getElementsByClassName("pop_add_movie_button");
+
+                    var popFunction = (event) => {
+                      let btnValue = event.target.getAttribute("value"); 
+                      let user = "<?php echo $_SESSION["user id"]; ?>";
+                      $.ajax({
+                        url: "../movie-markdown/classes/AddMovie.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: ({movieid: btnValue, userid: user}),
+                      });
+
+                      var id = event.target.getAttribute("id");
+                      var button = document.getElementById(id);
+                      button.disabled = true;
+                      button.textContent = "Movie Added";
+                    }
+
+                    for (var i = 0; i < pop_elements.length; i++) {
+                      let button = pop_elements[i].children[1];
+                      button.addEventListener("click", popFunction);
+                    }
+                    
+                </script>
               </section>
             </section>
             
@@ -163,16 +216,21 @@
                           <?php
                             if (in_array($movie["title"], $added)) {
                               ?>
-                                <button type="button" disabled>Movie Added</button>
+                                 <button type="button" class="btn btn-primary" disabled>Movie Added</button>
                               <?php
                             }
                             else {
                               ?>
-                              <form action="?command=homepage" method="post">
-                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
-                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
-                              </form>
-                              <?php
+                              <!-- <form action="?command=homepage" class="ptw_add_movie_button" method="post" id="add_movie_button"> -->
+                              <!-- <form class="ptw_add_movie_button" method="post" id="add_movie_button"> -->
+                                <!-- <input type="hidden" id="movieid" name="movieid" value=""/> -->
+                                <!-- <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button> -->
+                              <!-- </form> -->
+                              <div class="ptw_add_movie_button" value="<?php echo $movie["id"];?>">
+                                <input type="hidden" id="ptw_movieid" name="ptw_movieid" value="<?php echo $movie["id"];?>"/> 
+                                <button type="submit" id="ptw_addmovie<?php echo $movie["id"];?>" name="ptw_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
+                              </div>
+                            <?php
                             }
                           ?>
                         </div>
@@ -180,6 +238,31 @@
                     <?php
                     }
                 ?>
+                <script>
+                    var ptw_elements = document.getElementsByClassName("ptw_add_movie_button");
+
+                    var ptwFunction = (event) => {
+                      let btnValue = event.target.getAttribute("value"); 
+                      let user = "<?php echo $_SESSION["user id"]; ?>";
+                      $.ajax({
+                        url: "../movie-markdown/classes/AddMovie.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: ({movieid: btnValue, userid: user}),
+                      });
+
+                      var id = event.target.getAttribute("id");
+                      var button = document.getElementById(id);
+                      button.disabled = true;
+                      button.textContent = "Movie Added";
+                    }
+
+                    for (var i = 0; i < ptw_elements.length; i++) {
+                      let button = ptw_elements[i].children[1];
+                      button.addEventListener("click", ptwFunction);
+                    }
+                    
+                </script>
               </section>
             </section>
           </div>
@@ -196,7 +279,8 @@
             <p class="text-center text-light">Made by Alex Chan & Nathaniel Gonzalez © 2022</p>
             </div>
           </footer>
-            
+
+
     </body>
           
 </html>

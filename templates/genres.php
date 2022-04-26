@@ -15,6 +15,7 @@
         <title>Genres</title>
         <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
 
     <body class="bg-dark">
@@ -86,15 +87,15 @@
                           <?php
                             if (in_array($movie["title"], $added)) {
                               ?>
-                                <button type="button" disabled>Movie Added</button>
+                                <button type="button" class="btn btn-primary" disabled>Movie Added</button>
                               <?php
                             }
                             else {
                               ?>
-                              <form action="?command=genres" method="post">
-                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
-                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
-                              </form>
+                              <div class="action_add_movie_button" value="<?php echo $movie["id"];?>">
+                                <input type="hidden" id="action_movieid" name="action_movieid" value="<?php echo $movie["id"];?>"/> 
+                                <button type="submit" id="action_addmovie<?php echo $movie["id"];?>" name="action_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
+                              </div>
                               <?php
                             }
                           ?>
@@ -103,6 +104,31 @@
                     <?php
                     }
                 ?>
+                <script>
+                    var action_elements = document.getElementsByClassName("action_add_movie_button");
+
+                    var actionFunction = (event) => {
+                      let btnValue = event.target.getAttribute("value"); 
+                      let user = "<?php echo $_SESSION["user id"]; ?>";
+                      $.ajax({
+                        url: "../movie-markdown/classes/AddMovie.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: ({movieid: btnValue, userid: user}),
+                      });
+
+                      var id = event.target.getAttribute("id");
+                      var button = document.getElementById(id);
+                      button.disabled = true;
+                      button.textContent = "Movie Added";
+                    }
+
+                    for (var i = 0; i < action_elements.length; i++) {
+                      let button = action_elements[i].children[1];
+                      button.addEventListener("click", actionFunction);
+                    }
+                    
+                </script>
               </section>
             </section>
             
@@ -124,15 +150,15 @@
                           <?php
                             if (in_array($movie["title"], $added)) {
                               ?>
-                                <button type="button" disabled>Movie Added</button>
+                                <button type="button" class="btn btn-primary" disabled>Movie Added</button>
                               <?php
                             }
                             else {
                               ?>
-                              <form action="?command=genres" method="post">
-                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
-                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
-                              </form>
+                              <div class="comedy_add_movie_button" value="<?php echo $movie["id"];?>">
+                                <input type="hidden" id="comedy_movieid" name="comedy_movieid" value="<?php echo $movie["id"];?>"/> 
+                                <button type="submit" id="comedy_addmovie<?php echo $movie["id"];?>" name="comedy_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
+                              </div>
                               <?php
                             }
                           ?>
@@ -141,6 +167,31 @@
                     <?php
                     }
                 ?>
+                <script>
+                    var comedy_elements = document.getElementsByClassName("comedy_add_movie_button");
+
+                    var comedyFunction = (event) => {
+                      let btnValue = event.target.getAttribute("value"); 
+                      let user = "<?php echo $_SESSION["user id"]; ?>";
+                      $.ajax({
+                        url: "../movie-markdown/classes/AddMovie.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: ({movieid: btnValue, userid: user}),
+                      });
+
+                      var id = event.target.getAttribute("id");
+                      var button = document.getElementById(id);
+                      button.disabled = true;
+                      button.textContent = "Movie Added";
+                    }
+
+                    for (var i = 0; i < comedy_elements.length; i++) {
+                      let button = comedy_elements[i].children[1];
+                      button.addEventListener("click", comedyFunction);
+                    }
+                    
+                </script>
               </section>
             </section>
             
@@ -162,15 +213,15 @@
                           <?php
                             if (in_array($movie["title"], $added)) {
                               ?>
-                                <button type="button" disabled>Movie Added</button>
+                                <button type="button" class="btn btn-primary" disabled>Movie Added</button>
                               <?php
                             }
                             else {
                               ?>
-                              <form action="?command=genres" method="post">
-                                <input type="hidden" id="movieid" name="movieid" value="<?php echo $movie["id"];?>"/>
-                                <button type="submit" id="addmovie" name="addmovie" class="btn btn-primary">Add to Movie List</button>
-                              </form>
+                              <div class="drama_add_movie_button" value="<?php echo $movie["id"];?>">
+                                <input type="hidden" id="drama_movieid" name="drama_movieid" value="<?php echo $movie["id"];?>"/> 
+                                <button type="submit" id="drama_addmovie<?php echo $movie["id"];?>" name="drama_addmovie" class="btn btn-primary" value="<?php echo $movie["id"];?>">Add to Movie List</button>
+                              </div>
                               <?php
                             }
                           ?>
@@ -179,6 +230,31 @@
                     <?php
                     }
                 ?>
+                <script>
+                    var drama_elements = document.getElementsByClassName("drama_add_movie_button");
+
+                    var dramaFunction = (event) => {
+                      let btnValue = event.target.getAttribute("value"); 
+                      let user = "<?php echo $_SESSION["user id"]; ?>";
+                      $.ajax({
+                        url: "../movie-markdown/classes/AddMovie.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: ({movieid: btnValue, userid: user}),
+                      });
+
+                      var id = event.target.getAttribute("id");
+                      var button = document.getElementById(id);
+                      button.disabled = true;
+                      button.textContent = "Movie Added";
+                    }
+
+                    for (var i = 0; i < drama_elements.length; i++) {
+                      let button = drama_elements[i].children[1];
+                      button.addEventListener("click", dramaFunction);
+                    }
+                    
+                </script>
               </section>
             </section>
 

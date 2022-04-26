@@ -102,13 +102,6 @@ class MovieMarkdownController {
         $popular = $this->db->query("select * from project_movies where id between 3 and 4;");
         $plan_to_watch = $this->db->query("select * from project_movies where id between 5 and 6;");
 
-        // add movie to movie list
-        if (isset($_POST["addmovie"])) {
-            $added_movie = $this->db->query("select * from project_movies where id = ?;", "i", $_POST["movieid"]);
-            $insert = $this->db->query("insert into project_movielist (user_id, title, genre, poster, rating) values (?, ?, ?, ?, ?);", 
-                "isssi", $_SESSION["user id"], $added_movie[0]["title"], $added_movie[0]["genre"], $added_movie[0]["poster"], $added_movie[0]["rating"]); 
-        }
-
         // get list of movies that current user has added to movielist
         $seen = $this->db->query("select title from project_movielist where user_id = ?;", "i", $_SESSION["user id"]);
         $added = array();
