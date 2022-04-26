@@ -172,6 +172,7 @@
           </div>
         </footer>
 
+      
         <script>
           var my_movies_json = null;
           
@@ -186,6 +187,7 @@
                 my_movies_json = this.response;
                 displayMovies(); // create this function
                 setClickDelete(); // keep adding button event function setters here
+                setRatingEvent();
               }
             });
 
@@ -218,7 +220,7 @@
               newCell.innerHTML = `<td>${item['genre']}</td>`;
 
               newCell = newRow.insertCell(4); // fifth cell
-              var sel = "<select name='option_rating' aria-label='rating'>";
+              var sel = `<select name='option_rating' aria-label='rating' id='${index}sel' class='form-select' style='width:35%'>`;
               var options = "";
               for(let i = 1; i < 11; i++){
                 if(i === item['rating']){
@@ -228,7 +230,7 @@
                 }
               }
               var sel_closing = "</select>";
-              var button = "<button type='submit' class='btn btn-success btn-xs' style='margin-top: 10px'>Set</button>";
+              var button = `<button type='submit' class='btn btn-success btn-xs' value='${item['id']}' style='margin-top: 10px'>Set</button>`;
               newCell.innerHTML = `<td>${sel}${options}${sel_closing}<br>${button}</td>`;
 
               newCell = newRow.insertCell(5); // sixth cell
@@ -246,25 +248,46 @@
             //       $(this).text("Delete Entry");
             //     }
             //   );
+            // ABOVE HOVER IS FOR DEBUGGING PURPOSES TO SEE IF SELECTOR WORKS
 
             $(".btn-primary").each(function(index, element){
               $(this).click(function(){
-                // $(this).remove(); // now reference using 'element' after this line
-                // $(`tr:eq(${index+1})`).remove();
+                
                 $(`tr#${index}`).remove();
-
 
                 let btnValue = this.value; // try using 'element' if 'this' doesn't work -- value should store movie id (unique)
                 $.post("?command=remove_movie", {
                   btnValue: btnValue
-                }); // change this function to be the one that handles removal of movie
+                }); 
+              });
+            });
+          }
+
+          function setRatingEvent(){
+            $(".btn-success").each(function(index, element){
+              $(this).click(function(){
+
+                $(this).after(` <p id='${index}set' style='color:Lime'><br>Rating Set!</p>`);
+                $(this).prop('disabled', true);
+
+                setTimeout(function() {
+                  document.getElementById(`${index}set`).remove();
+                  $(element).prop('disabled', false);
+                },2000);
+
+                let selValue = $(`#${index}sel`).val();
+                let option_id = this.value;
+                $.post("?command=update_rating", {
+                  selValue: selValue,
+                  option_id: option_id
+                });
               });
             });
           }
 
           getMovies();
         </script>
-                
+   
       </body>
             
 </html>

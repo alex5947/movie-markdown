@@ -28,6 +28,9 @@ class MovieMarkdownController {
             case "remove_movie":
                 $this->removeMovie();
                 break;
+            case "update_rating":
+                $this->updateRating();
+                break;
             case "logout":
                 $this->destroySession();
                 break;
@@ -144,9 +147,9 @@ class MovieMarkdownController {
     // Display homepage (mymovielist.html)
     private function movielistPage() {
 
-        if(isset($_POST["option_rating"]) && !empty($_POST["option_rating"])){
-            $this->db->query("update project_movielist set rating = ? where user_id = ? and id = ?;", "iii", $_POST["option_rating"], $_SESSION["user id"], $_POST["option_id"]);
-        }// else if(isset($_POST["remove_movie"]) && !empty($_POST["remove_movie"]) ) {
+        // if(isset($_POST["option_rating"]) && !empty($_POST["option_rating"])){
+        //     $this->db->query("update project_movielist set rating = ? where user_id = ? and id = ?;", "iii", $_POST["option_rating"], $_SESSION["user id"], $_POST["option_id"]);
+        // }// else if(isset($_POST["remove_movie"]) && !empty($_POST["remove_movie"]) ) {
         //     $this->db->query("delete from project_movielist where user_id = ? and id = ?;", "ii", $_SESSION["user id"], $_POST["remove_movie"]);
         // }
 
@@ -168,5 +171,12 @@ class MovieMarkdownController {
             $this->db->query("delete from project_movielist where user_id = ? and id = ?;", "ii", $_SESSION["user id"], $_POST["btnValue"]);
         }
     }
+
+    public function updateRating(){
+        if(isset($_POST["selValue"]) && !empty($_POST["selValue"])){
+            $this->db->query("update project_movielist set rating = ? where user_id = ? and id = ?;", "iii", $_POST["selValue"], $_SESSION["user id"], $_POST["option_id"]);
+        }
+    }
+
 }
 
