@@ -61,6 +61,17 @@
           });
         </script> -->
 
+        <script>
+          function confirmLogout() {
+            let text = "Are you sure you want to logout?";
+            if (confirm(text) == true) {
+              var ajax = new XMLHttpRequest();
+              ajax.open("GET", "?command=logout", false);
+              ajax.send(null);
+            }
+          }
+        </script>
+
     </head>
 
     <body class="bg-dark">
@@ -68,7 +79,7 @@
         <!--Navigation Bar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-gradient">
             <div class="container-fluid">
-              <a class="navbar-brand highlight text-light" href="?command=homepage">Movie Markdown</a>
+              <a class="navbar-brand text-light">Movie Markdown</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -78,17 +89,14 @@
                     <a class="nav-link highlight text-light" aria-current="page" href="?command=homepage">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight active text-light" href="?command=movielist">My Movie List</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link highlight text-light" href="?command=genres">Genres</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link highlight text-light">My Profile</a>
+                    <a class="nav-link highlight active text-light" href="?command=movielist">My Movie List</a>
                   </li>
                   <!--If not logged in, will show as "Login", else if logged in, will show as "Logout"-->
                   <li class="nav-item">
-                    <a href="?command=logout" class="nav-link highlight text-light">Logout</a>
+                    <a href="" class="nav-link highlight text-light" onclick="confirmLogout()">Logout</a>
                   </li>
                 </ul>
               </div>
@@ -156,10 +164,9 @@
           <div class = "col-12">
           <ul class="nav justify-content-center border-bottom border-light pb-3 mb-3">
               <li class="nav-item"><a href="?command=homepage" class="nav-link px-2 text-light">Home</a></li>
-              <li class="nav-item"><a href="?command=mymovielist" class="nav-link px-2 text-light">My Movie List</a></li>
               <li class="nav-item"><a href="?command=genres" class="nav-link px-2 text-light">Genres</a></li>
-              <li class="nav-item"><a href="#" class="nav-link px-2 text-light">My Profile</a></li>
-              <li class="nav-item"><a href="?command=logout" class="nav-link px-2 text-light">Logout</a></li>
+              <li class="nav-item"><a href="?command=mymovielist" class="nav-link px-2 text-light">My Movie List</a></li>
+              <li class="nav-item"><a href="" class="nav-link px-2 text-light" onclick="confirmLogout()">Logout</a></li>
           </ul>
           <p class="text-center text-light">Made by Alex Chan & Nathaniel Gonzalez © 2022</p>
           </div>
