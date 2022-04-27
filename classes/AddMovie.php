@@ -1,4 +1,6 @@
 <?php
+// authors: Alex Chan and Nathaniel Gonzalez
+
 include "MovieMarkdownController.php";
 include "Config.php";
 class Database {

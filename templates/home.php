@@ -120,7 +120,8 @@
                       let btnValue = event.target.getAttribute("value"); 
                       let user = "<?php echo $_SESSION["user id"]; ?>";
                       $.ajax({
-                        url: "../movie-markdown/classes/AddMovie.php",
+                        // url: "../project/classes/AddMovie.php", // for running on ac5ug site
+                        url: "../movie-markdown/classes/AddMovie.php", // for running locally
                         type: "POST",
                         dataType: "json",
                         data: ({movieid: btnValue, userid: user}),
@@ -183,7 +184,8 @@
                       let btnValue = event.target.getAttribute("value"); 
                       let user = "<?php echo $_SESSION["user id"]; ?>";
                       $.ajax({
-                        url: "../movie-markdown/classes/AddMovie.php",
+                        // url: "../project/classes/AddMovie.php", // for running on ac5ug site
+                        url: "../movie-markdown/classes/AddMovie.php", // for running locally
                         type: "POST",
                         dataType: "json",
                         data: ({movieid: btnValue, userid: user}),
@@ -246,7 +248,8 @@
                       let btnValue = event.target.getAttribute("value"); 
                       let user = "<?php echo $_SESSION["user id"]; ?>";
                       $.ajax({
-                        url: "../movie-markdown/classes/AddMovie.php",
+                        // url: "../project/classes/AddMovie.php", // for running on ac5ug site
+                        url: "../movie-markdown/classes/AddMovie.php", // for running locally
                         type: "POST",
                         dataType: "json",
                         data: ({movieid: btnValue, userid: user}),

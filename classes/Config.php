@@ -1,4 +1,5 @@
 <?php
+// authors: Alex Chan and Nathaniel Gonzalez
 
 class Config {
     public static $db = [
@@ -8,5 +9,6 @@ class Config {
         // "pass" => "-mAr1tU1QZVe",
         "pass" => "",
         "database" => "project_db"
+        // "database" => "ac5ug"
     ];
 }

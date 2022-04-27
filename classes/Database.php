@@ -1,4 +1,6 @@
 <?php
+// authors: Alex Chan and Nathaniel Gonzalez
+
 include "Config.php";
 class Database {
     private $mysqli;

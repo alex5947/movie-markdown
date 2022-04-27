@@ -1,4 +1,5 @@
 <?php
+// authors: Alex Chan and Nathaniel Gonzalez
 
     session_start();
 
